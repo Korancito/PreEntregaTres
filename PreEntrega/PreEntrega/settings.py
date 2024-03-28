@@ -55,7 +55,7 @@ ROOT_URLCONF = 'PreEntrega.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["C:/Users/fksob/Documents/CoderHouse/PreEntregaTresGit/PreEntrega/Tienda/template"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
