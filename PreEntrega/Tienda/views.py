@@ -11,3 +11,12 @@ from django.template import loader
 
 def inicio(request):
     return render(request, "home.html")
+
+def nosotros(request):
+    return render(request, "nosotros.html")
+
+def products(request):
+    return render(request, "productos.html")
+
+def login(request):
+    return render(request, "login.html")
