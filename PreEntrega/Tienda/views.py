@@ -40,12 +40,18 @@ def new_prod(request):
         
         formulario = Productos_formulario(request.POST)
         if formulario.is_valid():
-            datos = formulario.claned_data
+            datos = formulario.cleaned_data
 
-            producto = Productos(Prod_name=datos["Nombre"], Prod_cost=datos["Costo"], Prod_sale=datos["Venta"])
+            producto = Productos(Prod_name=datos["Prod_name"], Prod_cost=datos["Prod_cost"], Prod_sale=datos["Prod_sale"])
             producto.save()
+            print(datos)
+            print("producto validado")
+            
             return render(request, "formulario.html")
-    
+        else:
+            print("producto no validado", formulario.errors)
+            
+            
     return render(request, "formulario.html")
 
 

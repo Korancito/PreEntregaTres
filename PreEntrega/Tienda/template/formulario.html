@@ -46,11 +46,11 @@
         <form action="Nuevo_Producto" method="POST">
             {% csrf_token %}
             <p>Nombre:</p>
-            <input type="text" name="Nombre" required>
+            <input type="text" name="Prod_name" required>
             <p>Precio Costo</p>
-            <input type="number"  name="Costo" required>
+            <input type="number" name="Prod_cost" required>
             <p>Precio Venta</p>
-            <input type="number"  name="Venta" required>
+            <input type="number" name="Prod_sale" required>
 
             <button>Enviar</button>
         </form>

@@ -8,8 +8,8 @@ class Registro_formulario(forms.Form):
 
 class Productos_formulario(forms.Form):
     
-    Prod_name = forms.CharField(max_length=15)
-    Prod_cost = forms.ImageField()
+    Prod_name = forms.CharField(max_length=50)
+    Prod_cost = forms.IntegerField()
     Prod_sale = forms.IntegerField()
     
 class Carrito(forms.Form):

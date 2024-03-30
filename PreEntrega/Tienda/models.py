@@ -10,7 +10,7 @@ class Registro(models.Model):
 
 class Productos(models.Model):
     
-    Prod_name = models.CharField(max_length=15)
+    Prod_name = models.CharField(max_length=50)
     Prod_cost = models.IntegerField()
     Prod_sale = models.IntegerField()
     
