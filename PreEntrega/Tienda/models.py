@@ -12,11 +12,11 @@ class Productos(models.Model):
     
     Prod_name = models.CharField(max_length=15)
     Prod_cost = models.IntegerField()
-    Prod_Sale = models.IntegerField()
+    Prod_sale = models.IntegerField()
     
 
 class Carrito(models.Model):
     
     Prod_Ncart = models.CharField(max_length=15)
-    Prod_SCart = models.IntegerField()
+    Prod_Scart = models.IntegerField()
     

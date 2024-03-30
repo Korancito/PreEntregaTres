@@ -1,8 +1,32 @@
 {%extends 'home.html'%}
+{%load static%}
+
+{%block titulo%} <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="">Productos</a> {%endblock%}
+
+
 
 {%block contenido%}
 
+<div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="{%url 'Nuevo'%}">Añadir Productos</a></div>
 
 
+
+{%endblock%}
+
+{%block encabezado%}
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/R.jpg' %}" alt="..." />
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                 <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="#!">Compra Aqui!</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
+
+
+{%block pie%}
 
 {%endblock%}
