@@ -1,0 +1,69 @@
+{%extends "home.html"%}
+
+{%load static%}
+
+
+{%block contenido%}
+
+<style>
+    .centered-form {
+        max-width: 250px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: none;
+        padding: 1px;
+    }
+
+    input[type="text"],
+    input[type="numbre"] {
+            color:rgb(20, 1, 1);
+            background-color: rgb(241, 232, 232);
+            border: none;
+            padding: 1px 5px;
+            margin-bottom: 5px;
+    }
+
+    button {
+        background-color: rgb(102, 96, 39);
+        color: rgb(7, 0, 0);
+        padding: 2px 4px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    p {
+        font-size: 15px;
+        color: rgb(240, 233, 233);
+        margin-bottom: 2px;
+    }
+
+</style>
+
+    <div class="centered.form">
+        <form action="search" method="GET">
+            <p>Nombre</p>
+            <input type="text" name="name" id="name">
+
+
+            <button>Buscar</button>
+        </form>
+
+
+
+
+    </div>
+
+
+
+{%endblock%}
+
+
+{%block encabezado%}
+
+{%endblock%}
+
+{%block pie%}
+
+{%endblock%}
+

@@ -2,10 +2,6 @@
 
 {%load static%}
 
-{%block titulo%} <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="">Productos</a> {%endblock%}
-
-
-
 {%block contenido%}
 
 <style>
@@ -42,33 +38,34 @@
     }
 </style>
 
-<div class="centered-form">
-        <form action="Nuevo_Producto" method="POST">
-            {% csrf_token %}
-            <p>Nombre:</p>
-            <input type="text" name="Prod_name" required>
+    <div class="centered-form">
+        <form action="{%url 'editar_producto' producto.id%}" method="POST">
+            {%csrf_token%}
+            <p>Nombre</p>
+            {{formulario.Prod_name}}
             <p>Precio Costo</p>
-            <input type="number" name="Prod_cost" required>
+            {{formulario.Prod_cost}}
             <p>Precio Venta</p>
-            <input type="number" name="Prod_sale" required>
+            {{formulario.Prod_sale}}
 
             <button>Enviar</button>
+
         </form>
-        
-</div>
+    </div>
 
 {%endblock%}
+
 
 {%block encabezado%}
 <section class="page-section clearfix">
     <div class="container">
         <div class="" style="text-align: center;">
-            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/form.png' %}" alt="..." style="width: 640px; height:480px;" />
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/hand.jpg' %}" alt="..." style="width: 700px; height:400px;" />
         </div>
     </div>
 </section>
-{%endblock%}
 
+{%endblock%}
 
 {%block pie%}
 

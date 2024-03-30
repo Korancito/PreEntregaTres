@@ -7,22 +7,54 @@
 
 {%block contenido%}
 
-<div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="{%url 'Nuevo'%}">Añadir Productos</a></div>
+        <div class="container" style="margin:auto">
+            <a class="btn btn-primary btn-xl" style="margin: auto;" href="{%url 'Nuevo'%}">Añadir Productos</a>
+            <a class="btn btn-primary btn-xl" style="margin: auto;" href="{%url 'Buscar'%}">Buscar Producto</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="color: chartreuse;">Id</th>
+                        <th scope="col" style="color: chartreuse;">Producto</th>
+                        <th scope="col" style="color: chartreuse;">Precio Costo</th>
+                        <th scope="col" style="color: chartreuse;">Precio Consumidor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {%for n in productos%}
+                    <tr>
+                        
+                        <td style="color: gold;">{{n.id}}</td>
+                        <td style="color: gold;">{{n.Prod_name}}</td>
+                        <td style="color: gold;">{{n.Prod_cost}}</td>
+                        <td style="color: gold;">{{n.Prod_sale}}</td>
+                        <td>
+                        <a type="button" class="btn btn-outline-light" style="background-color: black;" href="{%url 'eliminar_producto' n.id%}">Eliminar</a>
+                        <a type="button" class="btn btn-outline-light" style="background-color: rgb(18, 34, 2);" href="{%url 'editar_producto' n.id%}">Editar</a>
+                        </td>
+                    </tr>
+                    {%endfor%}
 
+                </tbody>
+
+
+            </table>
+
+
+
+
+
+    </div>
 
 
 {%endblock%}
 
 {%block encabezado%}
+
 <section class="page-section clearfix">
     <div class="container">
-        <div class="intro">
-            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/R.jpg' %}" alt="..." />
-            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                 <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="#!">Compra Aqui!</a></div>
-            </div>
-        </div>
-    </div>
+        <div class="" style="text-align: center;">
+            <img class="img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/puesto2.png' %}" alt="..." style="width: 700px; height:400px;" />
 </section>
 {%endblock%}
 

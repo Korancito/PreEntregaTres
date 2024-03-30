@@ -14,6 +14,8 @@ class Productos(models.Model):
     Prod_cost = models.IntegerField()
     Prod_sale = models.IntegerField()
     
+    def __str__(self):
+        return f"{self.Prod_name} {self.Prod_cost} {self.Prod_sale}"
 
 class Carrito(models.Model):
     
