@@ -6,3 +6,4 @@ from . models import *
 admin.site.register(Registro)
 admin.site.register(Productos)
 admin.site.register(Carrito)
+admin.site.register(Staff)

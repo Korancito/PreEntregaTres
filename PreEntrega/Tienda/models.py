@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 class Registro(models.Model):
     
-    Usuario = models.CharField(max_length=30)
+    fname = models.CharField(max_length=30)
+    lname = models.CharField(max_length=30, null=True)
     Email = models.CharField(max_length=30)
     Passw = models.CharField(max_length=8)
 
@@ -27,5 +28,7 @@ class Staff(models.Model):
     
     sname = models.CharField(max_length=50)
     slname = models.CharField(max_length=50)
+    scateg = models.CharField(max_length=50, null=True)
     sstatus = models.CharField(max_length=50)
+    
     

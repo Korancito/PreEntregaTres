@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from Tienda.models import Registro
-from Tienda.models import Carrito
-from Tienda.models import Productos
+from Tienda.models import *
 from django.http import HttpResponse
 from django.template import loader
 from Tienda.forms import *
@@ -18,6 +16,11 @@ def nosotros(request):
 
 def products(request):
     return render(request, "productos.html")
+
+
+
+#----------PRODUCTOS--------------
+
 
 def ver_producto(request):
     productos = Productos.objects.all()
@@ -84,7 +87,6 @@ def eliminar_producto(request, id):
 def search_product(request):
     return render(request, "search_product.html")
 
-
 def search(request):
     if request.GET["Producto"]:
         prd = request.GET["Producto"]
@@ -92,16 +94,113 @@ def search(request):
         
         return render(request, "search_result.html", {"productos":productos})
 
+#----------Staff--------------
+
+def ver_staff(request):
+    staff = Staff.objects.all()
+    dicc = {"staff": staff}
+    print("contenido de productos")
+    for name in staff:
+        print(name.id, name.sname, name.slname, name.scateg, name.sstatus)
+    print("contendio de dicc")
+    print(dicc)
+    plantilla = loader.get_template("nosotros.html")
+    documento = plantilla.render(dicc)
+    print("contenido de documento")
+    print(documento)
+    return HttpResponse(documento)
+
+def new_staff(request):
+    
+    if request.method == "POST":
+        
+        formulario = Staff_formulario(request.POST)
+        if formulario.is_valid():
+            datos = formulario.cleaned_data
+
+            staff = Staff(sname=datos["sname"], slname=datos["slname"], scateg=datos["scateg"], sstatus=datos["sstatus"])
+            staff.save()
+            print(datos)
+            staff = Staff.objects.all()
+            print("validado")
+            
+            return render(request, "nosotros.html", {"staff": staff})
+        else:
+            print("no validado", formulario.errors)
+            
+    return render(request, "Staff_form.html")
+
+def eliminar_staff(request, id):
+    staff = Staff.objects.get(id=id)
+    staff.delete()
+    
+    staff = Staff.objects.all()
+    return render(request, "nosotros.html", {"staff":staff})
+
+def edit_staff(request,id):
+    staff = Staff.objects.get(id=id)
+    
+    if request.method == "POST":
+        formulario = Staff_formulario(request.POST)
+        if formulario.is_valid():
+            datos = formulario.cleaned_data
+            staff.sname = datos["sname"]
+            staff.slname = datos["slname"]
+            staff.scateg= datos["scateg"]
+            staff.sstatus= datos["sstatus"]
+            staff.save()
+            staff = Staff.objects.all()
+            
+            return render(request, "nosotros.html", {"staff":staff})
+    
+    else:
+        formulario = Staff_formulario(initial={"sname": staff.sname, "slname":staff.slname, "scateg":staff.scateg, "sstatus":staff.sstatus})
+    
+    return render(request, "Staff_edit.html", {"formulario":formulario, "staff":staff})
 
 
-def registro(request):
-    regi = Carrito.objects.all()
-    pass
+#---------Login--------------
 
 
-def registro(request):
-    regi = Registro.objects.all()
-    pass
+#--------Registro------------
+
+
+def log_in(request):
+    return render(request, "login.html")
+
+def reg_user(request):
+    if request.method == "POST":
+        
+        formulario = Registro_formulario(request.POST)
+        if formulario.is_valid():
+            datos = formulario.cleaned_data
+
+            registro = Registro(fname=datos["fname"], lname=datos["lname"], Email=datos["Email"], Passw=datos["Passw"])
+            registro.save()
+            print(datos)
+            registro = Registro.objects.all()
+            print("validado")
+            
+            return render(request, "login.html", {"registro": registro})
+        else:
+            print("no validado", formulario.errors)
+            
+    return render(request, "register.html")
+
+def s_in(request):  
+    email = request.GET["Email"]
+    password = request.GET["Passw"]
+    user = Registro(Email=email, Passw=password)
+    if user is not None:
+        return render(request, "home.html")
+    else:
+        return render(request, "register.html")
+
+
+
+
+
+
 
 '''def new_prod(request, Nombre, Costo, Venta):
     
@@ -118,5 +217,3 @@ def registro(request):
 
 
 
-def login(request):
-    return render(request, "login.html")

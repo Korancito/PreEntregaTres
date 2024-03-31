@@ -1,0 +1,77 @@
+{%extends "home.html"%}
+
+{%load static%}
+
+{%block titulo%} <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="">Staff</a> {%endblock%}
+
+
+
+{%block contenido%}
+
+<style>
+    .centered-form {
+        max-width: 250px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: none;
+        padding: 1px;
+    }
+
+    input[type="text"],
+    input[type="numbre"] {
+            color:rgb(20, 1, 1);
+            background-color: rgb(241, 232, 232);
+            border: none;
+            padding: 1px 5px;
+            margin-bottom: 5px;
+    }
+
+    button {
+        background-color: rgb(102, 96, 39);
+        color: rgb(7, 0, 0);
+        padding: 2px 4px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    p {
+        font-size: 15px;
+        color: rgb(240, 233, 233);
+        margin-bottom: 2px;
+    }
+</style>
+
+<div class="centered-form">
+        <form action="Nuevo_Staff" method="POST">
+            {% csrf_token %}
+            <p>Nombre:</p>
+            <input type="text" name="sname" required>
+            <p>Apellido</p>
+            <input type="text" name="slname" required>
+            <p>Categoria</p>
+            <input type="text" name="scateg" required>
+            <p>Status</p>
+            <input type="text" name="sstatus" required>
+
+            <button>Enviar</button>
+        </form>
+        
+</div>
+
+{%endblock%}
+
+{%block encabezado%}
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="" style="text-align: center;">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/crew3.jpg' %}" alt="..." style="width: 340px; height:280px;" />
+        </div>
+    </div>
+</section>
+{%endblock%}
+
+
+{%block pie%}
+
+{%endblock%}
