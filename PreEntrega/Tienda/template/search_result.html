@@ -1,0 +1,63 @@
+{%extends "home.html"%}
+
+{%load static%}
+
+
+{%block contenido%}
+
+<div class="container" style="margin:auto">
+    <a class="btn btn-primary btn-xl" style="margin: auto;" href="{%url 'Buscar'%}">Buscar Producto</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" style="color: chartreuse;">Id</th>
+                <th scope="col" style="color: chartreuse;">Producto</th>
+                <th scope="col" style="color: chartreuse;">Precio Costo</th>
+                <th scope="col" style="color: chartreuse;">Precio Consumidor</th>
+            </tr>
+        </thead>
+        <tbody>
+   
+
+    {%if productos%}
+
+        <ul>
+        {%for prod in productos%}
+        <tr>
+                        
+            <td style="color: gold;">{{prod.id}}</td>
+            <td style="color: gold;">{{prod.Prod_name}}</td>
+            <td style="color: gold;">{{prod.Prod_cost}}</td>
+            <td style="color: gold;">{{prod.Prod_sale}}</td>
+            
+        </tr>
+
+
+        {%endfor%}
+        </ul>
+    
+    {%else%}
+
+        <p>No se encontraron cursos con ese nombre</p>
+
+    {%endif%}
+
+
+
+
+
+  
+
+
+
+{%endblock%}
+
+
+{%block encabezado%}
+
+{%endblock%}
+
+{%block pie%}
+
+{%endblock%}
+

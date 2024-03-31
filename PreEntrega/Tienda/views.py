@@ -19,27 +19,6 @@ def nosotros(request):
 def products(request):
     return render(request, "productos.html")
 
-def registro(request):
-    regi = Carrito.objects.all()
-    pass
-
-
-def registro(request):
-    regi = Registro.objects.all()
-    pass
-
-'''def new_prod(request, Nombre, Costo, Venta):
-    
-    if request.method == "POST":
-        nuevo = Productos(Prod_name=Nombre, Prod_cost=Costo, Prod_sale=Venta)
-        nuevo.save()
-
-        texto = f"Nuevo producto agregado {Productos.Prod_name} ${Productos.Prod_sale}"
-
-        return render(request, "formulario.html", texto)
-    
-    return render(request, "formulario.html")
-'''
 def ver_producto(request):
     productos = Productos.objects.all()
     dicc = {"productos": productos}
@@ -53,8 +32,6 @@ def ver_producto(request):
     print("contenido dede documento")
     print(documento)
     return HttpResponse(documento)
-
-
 
 def new_prod(request):
     
@@ -104,13 +81,40 @@ def eliminar_producto(request, id):
     producto = Productos.objects.all()
     return render(request, "productos.html", {"productos":producto})
 
-def search(request):
-    if request.GET["Prod_name"]:
-        prd = request.GET["name"]
-        producto = Productos.objects.filter(Prod_name__icontains = prd)
-        
-        return render(request, "resultado_busqueda.html", {"productos":producto})
+def search_product(request):
+    return render(request, "search_product.html")
 
+
+def search(request):
+    if request.GET["Producto"]:
+        prd = request.GET["Producto"]
+        productos = Productos.objects.filter(Prod_name__icontains = prd)
+        
+        return render(request, "search_result.html", {"productos":productos})
+
+
+
+def registro(request):
+    regi = Carrito.objects.all()
+    pass
+
+
+def registro(request):
+    regi = Registro.objects.all()
+    pass
+
+'''def new_prod(request, Nombre, Costo, Venta):
+    
+    if request.method == "POST":
+        nuevo = Productos(Prod_name=Nombre, Prod_cost=Costo, Prod_sale=Venta)
+        nuevo.save()
+
+        texto = f"Nuevo producto agregado {Productos.Prod_name} ${Productos.Prod_sale}"
+
+        return render(request, "formulario.html", texto)
+    
+    return render(request, "formulario.html")
+'''
 
 
 

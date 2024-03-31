@@ -24,7 +24,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
             <div class="container">
-                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Nosotros</a>
+                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="{% url 'About' %}">Nosotros</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
@@ -58,6 +58,65 @@
                     </div>
                 </div>
             </div>
+
+
+        {%block contenido%}
+
+        <style>
+            .centered-form {
+                max-width: 250px;
+                margin: 0 auto;
+                text-align: center;
+                background-color: none;
+                padding: 1px;
+            }
+        
+            input[type="text"],
+            input[type="numbre"] {
+                    color:rgb(20, 1, 1);
+                    background-color: rgb(241, 232, 232);
+                    border: none;
+                    padding: 1px 5px;
+                    margin-bottom: 5px;
+            }
+        
+            button {
+                background-color: rgb(102, 96, 39);
+                color: rgb(7, 0, 0);
+                padding: 2px 4px;
+                border: none;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+        
+            p {
+                font-size: 15px;
+                color: rgb(240, 233, 233);
+                margin-bottom: 2px;
+            }
+        </style>
+        
+        <div class="centered-form">
+                <form action="Nuevo_Producto" method="POST">
+                    {% csrf_token %}
+                    <p>Nombre:</p>
+                    <input type="text" name="Prod_name" required>
+                    <p>Precio Costo</p>
+                    <input type="number" name="Prod_cost" required>
+                    <p>Precio Venta</p>
+                    <input type="number" name="Prod_sale" required>
+        
+                    <button>Enviar</button>
+                </form>
+                
+        </div>
+
+
+
+
+
+
+        {%endblock%}
         </section>
         <footer class="footer text-faded text-center py-5">
             <div class="container"><p class="m-0 small">Copyright &copy; koran 2024</p></div>

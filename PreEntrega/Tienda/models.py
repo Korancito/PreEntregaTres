@@ -21,4 +21,11 @@ class Carrito(models.Model):
     
     Prod_Ncart = models.CharField(max_length=15)
     Prod_Scart = models.IntegerField()
+
+
+class Staff(models.Model):
+    
+    sname = models.CharField(max_length=50)
+    slname = models.CharField(max_length=50)
+    sstatus = models.CharField(max_length=50)
     
