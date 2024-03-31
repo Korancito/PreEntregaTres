@@ -8,6 +8,8 @@ class Registro(models.Model):
     Email = models.CharField(max_length=30)
     Passw = models.CharField(max_length=8)
 
+    def __str__(self):
+        return f"{self.fname} {self.lname} {self.Email} {self.Passw}"
 
 class Productos(models.Model):
     
@@ -23,12 +25,14 @@ class Carrito(models.Model):
     Prod_Ncart = models.CharField(max_length=15)
     Prod_Scart = models.IntegerField()
 
-
 class Staff(models.Model):
     
     sname = models.CharField(max_length=50)
     slname = models.CharField(max_length=50)
     scateg = models.CharField(max_length=50, null=True)
     sstatus = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return f"{self.sname} {self.slname} {self.scateg} {self.sstatus}"
     
     

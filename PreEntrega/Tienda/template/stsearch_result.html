@@ -24,29 +24,31 @@
 {%block contenido%}
 
 <div class="container" style="margin:auto">
-    <a class="btn btn-primary btn-xl" style="margin: auto;" href="{%url 'Buscar'%}">Buscar Producto</a>
+    <a class="btn btn-primary btn-xl" style="margin: auto;" href="{%url 'Buscar'%}">Buscar Staff</a>
     <table class="table">
         <thead>
             <tr>
                 <th scope="col" style="color: chartreuse;">Id</th>
-                <th scope="col" style="color: chartreuse;">Producto</th>
-                <th scope="col" style="color: chartreuse;">Precio Costo</th>
-                <th scope="col" style="color: chartreuse;">Precio Consumidor</th>
+                <th scope="col" style="color: chartreuse;">Nombre</th>
+                <th scope="col" style="color: chartreuse;">Apellido</th>
+                <th scope="col" style="color: chartreuse;">Categoria</th>
+                <th scope="col" style="color: chartreuse;">Estado</th>
             </tr>
         </thead>
         <tbody>
    
 
-    {%if productos%}
+    {%if staff%}
 
         <ul>
-        {%for prod in productos%}
+        {%for person in staff%}
         <tr>
                         
-            <td style="color: gold;">{{prod.id}}</td>
-            <td style="color: gold;">{{prod.Prod_name}}</td>
-            <td style="color: gold;">{{prod.Prod_cost}}</td>
-            <td style="color: gold;">{{prod.Prod_sale}}</td>
+            <td style="color: gold;">{{person.id}}</td>
+            <td style="color: gold;">{{person.sname}}</td>
+            <td style="color: gold;">{{person.slname}}</td>
+            <td style="color: gold;">{{person.scateg}}</td>
+            <td style="color: gold;">{{person.sstatus}}</td>
             
         </tr>
 

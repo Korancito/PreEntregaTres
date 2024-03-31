@@ -18,10 +18,8 @@ def out(request):
 def inicio(request):
     return render(request, "home.html")
 
-
 def nosotros(request):
     return render(request, "nosotros.html")
-
 
 def products(request):
     return render(request, "productos.html")
@@ -165,9 +163,18 @@ def edit_staff(request,id):
     
     return render(request, "Staff_edit.html", {"formulario":formulario, "staff":staff})
 
+def search_staff(request):
+    return render(request, "search_staff.html")
+
+def stsearch(request):
+    if request.GET["Nombre"]:
+        stf = request.GET["Nombre"]
+        staff = Staff.objects.filter(sname__icontains = stf)
+        
+        return render(request, "stsearch_result.html", {"staff":staff})
+
 
 #---------Login--------------\
-    
     
 def log_in(request):
     return render(request, "login.html")
