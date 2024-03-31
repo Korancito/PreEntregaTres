@@ -7,8 +7,17 @@ from Tienda.forms import *
 # Create your views here.
 
 
+#--------Navegacion-------------
+
+def first(request):
+    return render(request, "FirstPage.html")
+
+def out(request):
+    return render(request, "FirstPage.html")
+
 def inicio(request):
     return render(request, "home.html")
+
 
 def nosotros(request):
     return render(request, "nosotros.html")
@@ -18,9 +27,7 @@ def products(request):
     return render(request, "productos.html")
 
 
-
 #----------PRODUCTOS--------------
-
 
 def ver_producto(request):
     productos = Productos.objects.all()
@@ -159,14 +166,23 @@ def edit_staff(request,id):
     return render(request, "Staff_edit.html", {"formulario":formulario, "staff":staff})
 
 
-#---------Login--------------
+#---------Login--------------\
+    
+    
+def log_in(request):
+    return render(request, "login.html")
+
+def s_in(request):  
+    email = request.GET["Email"]
+    password = request.GET["Passw"]
+    user = Registro(Email=email, Passw=password)
+    if user is not None:
+        return render(request, "home.html")
+    else:
+        return render(request, "register.html")
 
 
 #--------Registro------------
-
-
-def log_in(request):
-    return render(request, "login.html")
 
 def reg_user(request):
     if request.method == "POST":
@@ -186,15 +202,6 @@ def reg_user(request):
             print("no validado", formulario.errors)
             
     return render(request, "register.html")
-
-def s_in(request):  
-    email = request.GET["Email"]
-    password = request.GET["Passw"]
-    user = Registro(Email=email, Passw=password)
-    if user is not None:
-        return render(request, "home.html")
-    else:
-        return render(request, "register.html")
 
 
 

@@ -22,6 +22,7 @@
             </h1>
         </header>
         <!-- Navigation-->
+        {%block nav%}
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
             <div class="container">
                 {%block titulo%} <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="">Home</a> {%endblock%}
@@ -29,13 +30,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Home' %}">Home</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'About' %}">Nosotros</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'About' %}">Staff</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Products' %}">Productos</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Login' %}">Login</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'out' %}">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+        {%endblock%}
         <!--Head-->
         {%block encabezado%}
         <section class="page-section clearfix">
@@ -44,11 +46,11 @@
                     <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/R.jpg' %}" alt="..." />
                     <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                         <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">Frutas y Verduras</span>
-                            <span class="section-heading-lower">Frescas</span>
+                            <span class="section-heading-upper">Estimado Usuario</span>
+                            <span class="section-heading-lower">Recuerde</span>
                         </h2>
-                        <p class="mb-3">Nuestra mision es acercar el campo a nuestos clientes, trayendo a sus manos productos de primera calidad, con el mayor de los cuidados.... El campo mas cerca!</p>
-                        <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="#!">Compra Aqui!</a></div>
+                        <p class="mb-3">Protejamos nuestra valiosa información en Verdeboutique! Cada dato es vital para el éxito y la confianza de nuestros clientes. Mantengamos altos estándares de seguridad y ética en el manejo de datos. Juntos, construyamos un futuro sólido y confiable para nuestra empresa</p>
+                        <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="#!"></a></div>
                     </div>
                 </div>
             </div>
