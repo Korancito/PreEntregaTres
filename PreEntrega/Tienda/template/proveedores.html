@@ -1,0 +1,90 @@
+{%extends 'home.html'%}
+{%load static%}
+
+{%block titlepage%}<title>Proveedores - VerdeBoutique</title>{%endblock%}
+
+{%block nav%}
+
+<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+        {%block titulo%} <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="">Proveedores</a> {%endblock%}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Home' %}">Home</a></li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'About' %}">Staff</a></li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Products' %}">Productos</a></li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Proveedores' %}">Proveedores</a></li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+{%endblock%}
+
+{%block contenido%}
+
+        <div class="container" style="margin:auto">
+            <a class="btn btn-primary btn-xl" style="margin: auto;" href="{%url 'NProv'%}">Añadir Proveedor</a>
+            <a class="btn btn-primary btn-xl" style="margin: auto;" href="{%url 'PvBuscar'%}">Buscar Proveedor</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="color: chartreuse;">Id</th>
+                        <th scope="col" style="color: chartreuse;">Raazon Social</th>
+                        <th scope="col" style="color: chartreuse;">Nombre Fantasia</th>
+                        <th scope="col" style="color: chartreuse;">RUT</th>
+                        <th scope="col" style="color: chartreuse;">GIRO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {%for n in proveedores%}
+                    <tr>
+                        
+                        <td style="color: gold;">{{n.id}}</td>
+                        <td style="color: gold;">{{n.RazonSocial}}</td>
+                        <td style="color: gold;">{{n.NomFant}}</td>
+                        <td style="color: gold;">{{n.Rut}}</td>
+                        <td style="color: gold;">{{n.Giro}}</td>
+                        <td>
+                        <a type="button" class="btn btn-outline-light" style="background-color: black;" href="{%url 'el_prov' n.id%}">Eliminar</a>
+                        <a type="button" class="btn btn-outline-light" style="background-color: rgb(18, 34, 2);" href="{%url 'edit_prov' n.id%}">Editar</a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+
+                </tbody>
+
+
+            </table>
+
+
+
+
+
+        </div>
+
+
+{%endblock%}
+
+{%block encabezado%}
+
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="" style="text-align: center;">
+            <img class="img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/prov.jpg' %}" alt="..." style="width: 700px; height:400px;" />
+</section>
+{%endblock%}
+
+
+{%block pie%}
+
+<footer class="footer text-faded text-center py-5">
+    <div class="container"><p class="m-0 small">Copyright &copy; koran 2024</p></div>
+    <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="https://steamcommunity.com/profiles/76561198387410870/">Comprale algo a Koran</a></div>
+</footer>
+
+{%endblock%}

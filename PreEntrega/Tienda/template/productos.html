@@ -1,7 +1,7 @@
 {%extends 'home.html'%}
 {%load static%}
 
-{%block titlepage%}<title>Productos</title>{%endblock%}
+{%block titlepage%}<title>Productos - VerdeBoutique</title>{%endblock%}
 
 {%block nav%}
 
@@ -12,7 +12,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Home' %}">Home</a></li>
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'About' %}">Staff</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'About' %}">Staff</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Products' %}">Productos</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Proveedores' %}">Proveedores</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="">Logout</a></li>
             </ul>
         </div>
     </div>

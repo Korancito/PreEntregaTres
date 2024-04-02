@@ -8,12 +8,13 @@ from Tienda.forms import *
 
 
 #--------Navegacion-------------
-
+'''
 def first(request):
     return render(request, "FirstPage.html")
 
 def out(request):
     return render(request, "FirstPage.html")
+'''
 
 def inicio(request):
     return render(request, "home.html")
@@ -24,6 +25,8 @@ def nosotros(request):
 def products(request):
     return render(request, "productos.html")
 
+def proveedores(request):
+    return render(request, "proveedores.html")
 
 #----------PRODUCTOS--------------
 
@@ -174,7 +177,84 @@ def stsearch(request):
         return render(request, "stsearch_result.html", {"staff":staff})
 
 
-#---------Login--------------\
+#-----------Proveedores--------------
+
+def ver_proveedores(request):
+    proveedores = Proveedores.objects.all()
+    dicc = {"proveedores":proveedores}
+    print("contenido de productos")
+    for proveedor in proveedores:
+        print(proveedor.id, proveedor.RazonSocial, proveedor.NomFant, proveedor.Rut, proveedor.Giro)
+    print("contendio dee dicc")
+    print(dicc)
+    plantilla = loader.get_template("proveedores.html")
+    documento = plantilla.render(dicc)
+    print("contenido dede documento")
+    print(documento)
+    return HttpResponse(documento)
+
+def new_preveedor(request):
+    
+    if request.method == "POST":
+        
+        formulario = Proveedores_formulario(request.POST)
+        if formulario.is_valid():
+            datos = formulario.cleaned_data
+
+            proveedores = Proveedores(RazonSocial=datos["RazonSocial"], NomFant=datos["NomFant"], Rut=datos["Rut"], Giro=datos["Giro"])
+            proveedores.save()
+            print(datos)
+            proveedores = Proveedores.objects.all()
+            print("validado")
+            
+            return render(request, "proveedores.html", {"proveedores": proveedores})
+        else:
+            print("no validado", formulario.errors)
+            
+    return render(request, "Prov_form.html")
+
+def eliminar_proveedor(request, id):
+    proveedores = Proveedores.objects.get(id=id)
+    proveedores.delete()
+    
+    proveedores = Proveedores.objects.all()
+    return render(request, "proveedores.html", {"proveedores":proveedores})
+
+def edit_proveedor(request,id):
+        proveedores = Proveedores.objects.get(id=id)
+    
+        if request.method == "POST":
+            formulario = Proveedores_formulario(request.POST)
+            if formulario.is_valid():
+                datos = formulario.cleaned_data
+                proveedores.RazonSocial = datos["RazonSocial"]
+                proveedores.NomFant = datos["NomFant"]
+                proveedores.Rut = datos["Rut"]
+                proveedores.Giro = datos["Giro"]
+                proveedores.save()
+                proveedores = Proveedores.objects.all()
+                
+                return render(request, "proveedores.html", {"proveedores":proveedores})
+        
+        else:
+            formulario = Proveedores_formulario(initial={"RazonSocial": proveedores.RazonSocial, "NomFant":proveedores.NomFant, "Rut":proveedores.Rut, "Giro":proveedores.Giro})
+        
+        return render(request, "Prov_edit.html", {"formulario":formulario, "proveedores":proveedores})
+
+def search_proveedor(request):
+    return render(request, "search_prov.html")
+
+def provsearch(request):
+    if request.GET["RazonSocial"]:
+        pvd = request.GET["RazonSocial"]
+        proveedores = Proveedores.objects.filter(RazonSocial__icontains = pvd)
+        
+        return render(request, "prvsearch_result.html", {"proveedores":proveedores})
+
+
+'''
+
+#---------Login--------------
     
 def log_in(request):
     return render(request, "login.html")
@@ -190,6 +270,7 @@ def s_in(request):
 
 
 #--------Registro------------
+
 
 def reg_user(request):
     if request.method == "POST":
@@ -211,12 +292,7 @@ def reg_user(request):
     return render(request, "register.html")
 
 
-
-
-
-
-
-'''def new_prod(request, Nombre, Costo, Venta):
+'def new_prod(request, Nombre, Costo, Venta):
     
     if request.method == "POST":
         nuevo = Productos(Prod_name=Nombre, Prod_cost=Costo, Prod_sale=Venta)

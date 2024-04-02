@@ -2,7 +2,7 @@
 
 {%load static%}
 
-{%block titlepage%}<title>Add Staff</title>{%endblock%}
+{%block titlepage%}<title>Add Proveedor</title>{%endblock%}
 
 
 
@@ -10,15 +10,13 @@
 {%block nav%}
 <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
-        {%block titulo%} <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="">Staff</a> {%endblock%}
+        {%block titulo%} <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="">Proveedor</a> {%endblock%}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Home' %}">Home</a></li>
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'About' %}">Staff</a></li>
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Products' %}">Productos</a></li>
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Proveedores' %}">Proveedores</a></li>
-
 
             </ul>
         </div>
@@ -67,16 +65,16 @@
 </style>
 
 <div class="centered-form">
-        <form action="Nuevo_Staff" method="POST">
+        <form action="Nuevo_Prov" method="POST">
             {% csrf_token %}
-            <p>Nombre:</p>
-            <input type="text" name="sname" required>
-            <p>Apellido</p>
-            <input type="text" name="slname" required>
-            <p>Categoria</p>
-            <input type="text" name="scateg" required>
-            <p>Status</p>
-            <input type="text" name="sstatus" required>
+            <p>Razon Social</p>
+            <input type="text" name="RazonSocial" required>
+            <p>Nombre Fantasia</p>
+            <input type="text" name="NomFant" required>
+            <p>RUT</p>
+            <input type="text" name="Rut" required>
+            <p>GIRO</p>
+            <input type="text" name="Giro" required>
 
             <button>Enviar</button>
         </form>
@@ -86,13 +84,7 @@
 {%endblock%}
 
 {%block encabezado%}
-<section class="page-section clearfix">
-    <div class="container">
-        <div class="" style="text-align: center;">
-            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'Tienda/assets/img/crew3.jpg' %}" alt="..." style="width: 340px; height:280px;" />
-        </div>
-    </div>
-</section>
+
 {%endblock%}
 
 

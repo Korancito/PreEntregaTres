@@ -15,6 +15,7 @@
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Home' %}">Home</a></li>
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'About' %}">Staff</a></li>
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Products' %}">Productos</a></li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'Proveedores' %}">Proveedores</a></li>
             </ul>
         </div>
     </div>
@@ -58,7 +59,7 @@
     
     {%else%}
 
-        <p>No se encontraron cursos con ese nombre</p>
+    <p style="text-align: center; color:chartreuse">No hay coincidencias</p>
 
     {%endif%}
 

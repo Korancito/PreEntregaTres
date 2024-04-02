@@ -1,15 +1,15 @@
 from django.db import models
 
-# Create your models here.
-class Registro(models.Model):
+
+class Proveedores(models.Model):
     
-    fname = models.CharField(max_length=30)
-    lname = models.CharField(max_length=30, null=True)
-    Email = models.CharField(max_length=30)
-    Passw = models.CharField(max_length=8)
+    RazonSocial = models.CharField(max_length=30)
+    NomFant = models.CharField(max_length=30, null=True)
+    Rut = models.CharField(max_length=30)
+    Giro = models.CharField(max_length=8)
 
     def __str__(self):
-        return f"{self.fname} {self.lname} {self.Email} {self.Passw}"
+        return f"{self.RazonSocial} {self.NomFant} {self.Rut} {self.Giro}"
 
 class Productos(models.Model):
     
